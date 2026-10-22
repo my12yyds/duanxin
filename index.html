@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#4f6ef7">
+<meta name="format-detection" content="telephone=no">
+<meta name="description" content="手机号验证表单页">
+<title>手机号验证</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234f6ef7'/%3E%3Cpath d='M16 7l7 3v5.4c0 4.2-2.9 7.5-7 9.3-4.1-1.8-7-5.1-7-9.3V10l7-3z' fill='none' stroke='%23fff' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="page">
+  <!-- 背景装饰 -->
+  <div class="bg" aria-hidden="true">
+    <span class="bg__blob bg__blob--1"></span>
+    <span class="bg__blob bg__blob--2"></span>
+    <span class="bg__blob bg__blob--3"></span>
+  </div>
+
+  <main class="card" id="card">
+
+    <header class="card__head">
+      <div class="brand" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3l7 3v5.5c0 4.3-2.9 7.7-7 9.5-4.1-1.8-7-5.2-7-9.5V6l7-3z"/>
+          <path d="M9 12l2.2 2.2L15.5 10"/>
+        </svg>
+      </div>
+      <h1 class="card__title">手机号验证</h1>
+      <p class="card__sub">输入手机号并填写收到的验证码，完成身份校验</p>
+    </header>
+
+    <!-- ============ 快捷入口 ============ -->
+    <div class="quickbar">
+      <button type="button" class="quick" data-modal="announce">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10v4a1 1 0 001 1h2l4 4V5L7 9H5a1 1 0 00-1 1z"/><path d="M16 9a4 4 0 010 6"/></svg>
+        公告
+      </button>
+      <button type="button" class="quick" data-modal="support">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13a8 8 0 1116 0"/><rect x="2.5" y="13" width="4" height="6" rx="1.6"/><rect x="17.5" y="13" width="4" height="6" rx="1.6"/><path d="M20 19v.5a2.5 2.5 0 01-2.5 2.5H13"/></svg>
+        客服
+      </button>
+      <button type="button" class="quick" data-modal="feedback">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12.5a7.5 7.5 0 01-10.9 6.7L4 20l.9-4.9A7.5 7.5 0 1120 12.5z"/></svg>
+        留言
+      </button>
+    </div>
+
+    <!-- ============ Tab 导航 ============ -->
+    <div class="tabs" role="tablist" aria-label="页面分区">
+      <button type="button" class="tab is-active" role="tab" id="tab-main" data-tab="main" aria-controls="panel-main" aria-selected="true">功能操作</button>
+      <button type="button" class="tab" role="tab" id="tab-faq" data-tab="faq" aria-controls="panel-faq" aria-selected="false">问题解答</button>
+      <button type="button" class="tab" role="tab" id="tab-follow" data-tab="follow" aria-controls="panel-follow" aria-selected="false">关注本站</button>
+      <button type="button" class="tab" role="tab" id="tab-more" data-tab="more" aria-controls="panel-more" aria-selected="false">更多功能</button>
+    </div>
+
+    <div class="panels">
+
+      <!-- ==================== 功能操作 ==================== -->
+      <section class="panel is-active" id="panel-main" role="tabpanel" aria-labelledby="tab-main">
+
+        <!-- 滚动通知 -->
+        <div class="ticker">
+          <span class="ticker__tag">通知</span>
+          <div class="ticker__view">
+            <div class="ticker__track">
+              <span>本页面仅用于验证本人手机号，请勿用于任何骚扰他人或商业营销用途</span>
+              <span aria-hidden="true">本页面仅用于验证本人手机号，请勿用于任何骚扰他人或商业营销用途</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 进度 -->
+        <ol class="steps" id="steps">
+          <li class="step is-active" data-step="1">
+            <span class="step__dot"><span class="step__num">1</span><svg class="step__tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+            <span class="step__label">输入号码</span>
+          </li>
+          <li class="step" data-step="2">
+            <span class="step__dot"><span class="step__num">2</span><svg class="step__tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+            <span class="step__label">获取验证码</span>
+          </li>
+          <li class="step" data-step="3">
+            <span class="step__dot"><span class="step__num">3</span><svg class="step__tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+            <span class="step__label">完成验证</span>
+          </li>
+        </ol>
+
+        <form class="form" id="verifyForm" novalidate autocomplete="on">
+          <div id="formSection">
+
+            <div class="field" id="fieldPhone">
+              <label class="field__label" for="phone">手机号</label>
+              <div class="field__control">
+                <span class="field__prefix">+86</span>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  inputmode="numeric"
+                  autocomplete="tel-national"
+                  enterkeyhint="next"
+                  placeholder="请输入 11 位手机号"
+                  maxlength="11"
+                  aria-describedby="phoneErr"
+                >
+                <button type="button" class="field__clear" id="phoneClear" aria-label="清空手机号" hidden>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+                    <path d="M6 6l12 12M18 6L6 18"/>
+                  </svg>
+                </button>
+              </div>
+              <p class="field__error" id="phoneErr" role="alert"></p>
+            </div>
+
+            <div class="field" id="fieldCode">
+              <label class="field__label" for="code">验证码</label>
+              <div class="field__control">
+                <input
+                  id="code"
+                  name="code"
+                  type="text"
+                  inputmode="numeric"
+                  autocomplete="one-time-code"
+                  enterkeyhint="done"
+                  placeholder="请输入 6 位验证码"
+                  maxlength="6"
+                  aria-describedby="codeErr"
+                >
+                <button type="button" class="code-btn" id="codeBtn" disabled>获取验证码</button>
+              </div>
+              <p class="field__error" id="codeErr" role="alert"></p>
+            </div>
+
+            <button type="submit" class="submit" id="submitBtn">
+              <span class="submit__spinner" aria-hidden="true"></span>
+              <span class="submit__text">提交验证</span>
+            </button>
+
+            <button type="button" class="link-btn" id="resetBtn">清空重填</button>
+
+            <p class="form__hint">
+              提交即表示你同意本站仅将手机号用于本次验证，不会用于其他用途。
+            </p>
+          </div>
+
+          <!-- 结果反馈 -->
+          <section class="result" id="result" hidden aria-live="polite">
+            <div class="result__icon" id="resultIcon" aria-hidden="true"></div>
+            <h2 class="result__title" id="resultTitle"></h2>
+            <p class="result__desc" id="resultDesc"></p>
+            <dl class="result__meta" id="resultMeta"></dl>
+            <button type="button" class="btn-ghost" id="resultBack">返回修改</button>
+          </section>
+        </form>
+      </section>
+
+      <!-- ==================== 问题解答 ==================== -->
+      <section class="panel" id="panel-faq" role="tabpanel" aria-labelledby="tab-faq" hidden>
+        <details class="faq" open>
+          <summary class="faq__q">收不到验证码怎么办？<span class="faq__icon" aria-hidden="true"></span></summary>
+          <div class="faq__a">
+            <p>请先确认号码填写正确，再依次检查：是否被系统短信拦截、是否处于飞行模式、手机信号是否正常。等待 60 秒倒计时结束后可重新获取。</p>
+          </div>
+        </details>
+        <details class="faq">
+          <summary class="faq__q">验证码有效期是多久？<span class="faq__icon" aria-hidden="true"></span></summary>
+          <div class="faq__a">
+            <p>通常为 5 分钟，超时后需要重新获取。验证码只能使用一次，验证成功后立即失效。</p>
+          </div>
+        </details>
+        <details class="faq">
+          <summary class="faq__q">为什么提示发送过于频繁？<span class="faq__icon" aria-hidden="true"></span></summary>
+          <div class="faq__a">
+            <p>同一号码在短时间内请求过多会触发频控保护，请稍后再试。本页面已内置 60 秒冷却，冷却期内按钮不可点击。</p>
+          </div>
+        </details>
+        <details class="faq">
+          <summary class="faq__q">刷新页面后倒计时还在，是卡住了吗？<span class="faq__icon" aria-hidden="true"></span></summary>
+          <div class="faq__a">
+            <p>不是。倒计时状态保存在浏览器本地，刷新后会自动恢复剩余秒数，这是为了防止绕过冷却反复请求。</p>
+          </div>
+        </details>
+        <details class="faq">
+          <summary class="faq__q">手机号会被保存吗？<span class="faq__icon" aria-hidden="true"></span></summary>
+          <div class="faq__a">
+            <p>页面本身不保存完整号码。仅在验证成功后于本地记录一条脱敏号码（如 138 **** 8000），可在「更多功能」中随时清除。</p>
+          </div>
+        </details>
+        <details class="faq">
+          <summary class="faq__q">这个页面可以用来验证别人的号码吗？<span class="faq__icon" aria-hidden="true"></span></summary>
+          <div class="faq__a">
+            <p>不可以。请只验证你本人持有并已授权的手机号，向他人号码发送验证短信属于骚扰行为。</p>
+          </div>
+        </details>
+      </section>
+
+      <!-- ==================== 关注本站 ==================== -->
+      <section class="panel" id="panel-follow" role="tabpanel" aria-labelledby="tab-follow" hidden>
+        <div class="tip-card">
+          <div class="tip-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h12a1 1 0 011 1v15l-7-4-7 4V5a1 1 0 011-1z"/></svg>
+          </div>
+          <div class="tip-card__body">
+            <h3>建议收藏本页</h3>
+            <p>电脑端按 <kbd>Ctrl</kbd> + <kbd>D</kbd>，手机端点击浏览器菜单「添加到主屏幕」，下次可快速打开。</p>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button type="button" class="btn-soft" id="copyLinkBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M15 5H6a2 2 0 00-2 2v9"/></svg>
+            复制链接
+          </button>
+          <button type="button" class="btn-soft" id="shareBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.4 10.8l7.2-4.2M8.4 13.2l7.2 4.2"/></svg>
+            分享给朋友
+          </button>
+        </div>
+
+        <ul class="notice-list">
+          <li>本站永久免费，不收取任何费用</li>
+          <li>仅用于验证本人手机号，请勿用于骚扰他人</li>
+          <li>页面不存储完整手机号，验证记录仅保存在本地</li>
+        </ul>
+      </section>
+
+      <!-- ==================== 更多功能 ==================== -->
+      <section class="panel" id="panel-more" role="tabpanel" aria-labelledby="tab-more" hidden>
+        <div class="block-head">
+          <h3>最近验证记录</h3>
+          <button type="button" class="link-btn link-btn--sm" id="clearHistoryBtn">清除记录</button>
+        </div>
+        <ul class="records" id="recordList"></ul>
+
+        <div class="block-head block-head--mt">
+          <h3>关于</h3>
+        </div>
+        <ul class="about-list">
+          <li><span>版本</span><span>1.1.0</span></li>
+          <li><span>技术栈</span><span>原生 HTML / CSS / JS</span></li>
+          <li><span>依赖</span><span>无</span></li>
+          <li><span>运行模式</span><span id="aboutMode">演示模式</span></li>
+        </ul>
+      </section>
+
+    </div>
+
+    <footer class="card__foot">
+      <span class="dot" aria-hidden="true"></span>
+      <span id="modeHint">演示模式 · 验证码填 123456</span>
+    </footer>
+  </main>
+</div>
+
+<!-- ==================== 公告弹窗 ==================== -->
+<div class="modal" id="modal-announce" hidden>
+  <div class="modal__mask" data-close></div>
+  <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="announceTitle">
+    <header class="modal__head">
+      <h3 id="announceTitle">使用说明</h3>
+      <button type="button" class="modal__close" data-close aria-label="关闭">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </header>
+    <div class="modal__body">
+      <ol class="num-list">
+        <li><span class="num-list__idx">1</span>输入你本人持有的手机号，点击「获取验证码」。</li>
+        <li><span class="num-list__idx">2</span>收到短信后填写 6 位验证码，点击「提交验证」。</li>
+        <li><span class="num-list__idx">3</span>验证成功后页面会显示结果，可返回修改或关闭页面。</li>
+        <li><span class="num-list__idx">4</span>获取验证码后需等待 60 秒才能重发，刷新页面也不会重置。</li>
+      </ol>
+      <p class="modal__note">
+        本页面仅用于验证本人手机号，不提供、也不应被用于向他人号码批量发送短信或呼叫。请遵守相关法律法规。
+      </p>
+    </div>
+    <footer class="modal__foot">
+      <button type="button" class="btn-primary" data-close>我明白了</button>
+    </footer>
+  </div>
+</div>
+
+<!-- ==================== 客服弹窗 ==================== -->
+<div class="modal" id="modal-support" hidden>
+  <div class="modal__mask" data-close></div>
+  <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="supportTitle">
+    <header class="modal__head">
+      <h3 id="supportTitle">联系客服</h3>
+      <button type="button" class="modal__close" data-close aria-label="关闭">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </header>
+    <div class="modal__body">
+      <p class="modal__lead">遇到问题可以按下面的方式联系，工作时间内会尽快回复。</p>
+      <ul class="contact-list">
+        <li>
+          <span class="contact-list__label">邮箱</span>
+          <span class="contact-list__value" id="supportMail">support@example.com</span>
+          <button type="button" class="mini-btn" data-copy="#supportMail">复制</button>
+        </li>
+        <li>
+          <span class="contact-list__label">服务时间</span>
+          <span class="contact-list__value">周一至周五 09:00 – 18:00</span>
+        </li>
+      </ul>
+      <p class="modal__note">以上为占位信息，接入真实服务时替换即可。</p>
+    </div>
+    <footer class="modal__foot">
+      <button type="button" class="btn-primary" data-close>关闭</button>
+    </footer>
+  </div>
+</div>
+
+<!-- ==================== 留言弹窗 ==================== -->
+<div class="modal" id="modal-feedback" hidden>
+  <div class="modal__mask" data-close></div>
+  <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="feedbackTitle">
+    <header class="modal__head">
+      <h3 id="feedbackTitle">留言反馈</h3>
+      <button type="button" class="modal__close" data-close aria-label="关闭">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </header>
+    <div class="modal__body">
+      <label class="field__label" for="feedbackText">你的建议或遇到的问题</label>
+      <textarea class="textarea" id="feedbackText" maxlength="300" placeholder="最多 300 字，请勿填写手机号等敏感信息"></textarea>
+      <div class="textarea__meta"><span id="feedbackCount">0 / 300</span></div>
+    </div>
+    <footer class="modal__foot">
+      <button type="button" class="btn-ghost btn-ghost--sm" data-close>取消</button>
+      <button type="button" class="btn-primary" id="feedbackSubmit">提交留言</button>
+    </footer>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- API 配置：js/api-config.js 不进仓库，缺失时自动回落到演示模式 -->
+<script src="js/api-config.js" onerror="window.__API_CONFIG_MISSING__=true"></script>
+<script src="js/api.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

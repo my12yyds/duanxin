@@ -1,0 +1,9 @@
+# 本地真实接口配置，不进仓库
+js/api-config.js
+
+# 编辑器 / 系统
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
