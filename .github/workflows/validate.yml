@@ -1,0 +1,20 @@
+name: Validate static workspace
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Check JavaScript syntax
+        run: node --check public/app.js
+      - name: Check required Pages files
+        run: test -s public/index.html && test -s public/styles.css && test -s public/app.js

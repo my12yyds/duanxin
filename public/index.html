@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7f4">
+    <meta name="description" content="短信卫士：本地演示同意管理、通知模板、退订抑制、频率规则和操作审计。不会连接短信服务商或发送短信。">
+    <title>短信卫士 — 合规通知工作台</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到主要内容</a>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <a class="brand" href="#dashboard" data-route="dashboard" aria-label="短信卫士工作台">
+          <span class="brand-mark">信</span><span>短信卫士<span class="brand-en">MESSAGE GUARD</span></span>
+        </a>
+        <div class="workspace-label">工作台</div>
+        <nav class="side-nav" aria-label="工作台导航">
+          <a href="#dashboard" data-route="dashboard" class="nav-item active"><span class="nav-icon">◫</span> 总览</a>
+          <a href="#contacts" data-route="contacts" class="nav-item"><span class="nav-icon">◎</span> 联系人 <span class="nav-count" id="nav-contact-count">0</span></a>
+          <a href="#templates" data-route="templates" class="nav-item"><span class="nav-icon">▤</span> 通知模板</a>
+          <a href="#campaigns" data-route="campaigns" class="nav-item"><span class="nav-icon">◷</span> 活动演练</a>
+          <a href="#suppression" data-route="suppression" class="nav-item"><span class="nav-icon">⊘</span> 退订名单</a>
+          <a href="#audit" data-route="audit" class="nav-item"><span class="nav-icon">≋</span> 操作审计</a>
+        </nav>
+        <div class="sidebar-bottom">
+          <a href="#settings" data-route="settings" class="nav-item"><span class="nav-icon">⚙</span> 规则与数据</a>
+          <div class="local-card"><span class="local-dot"></span><div><strong>仅本机演示</strong><small>数据保存在当前浏览器</small></div></div>
+          <a href="https://github.com/my12yyds/duanxin" class="sidebar-github" target="_blank" rel="noreferrer">GitHub 项目 <span>↗</span></a>
+        </div>
+      </aside>
+
+      <div class="main-column">
+        <header class="topbar">
+          <button class="mobile-menu" id="mobile-menu" type="button" aria-label="打开导航" aria-expanded="false">☰</button>
+          <div class="breadcrumbs"><span>工作台</span><span class="crumb-sep">/</span><strong id="page-title">总览</strong></div>
+          <div class="top-actions"><span class="demo-badge"><i></i>演示模式</span><button class="avatar" id="user-menu" type="button" aria-label="当前演示用户">M</button></div>
+        </header>
+
+        <main id="main" tabindex="-1"><div id="view" class="view"></div></main>
+        <footer class="app-footer"><span>短信卫士 · 合规通知工作台</span><span>纯本地演示，不会发送短信</span></footer>
+      </div>
+    </div>
+    <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+    <dialog id="modal" class="modal"><form method="dialog" class="modal-dismiss"><button aria-label="关闭" class="icon-button">×</button></form><div id="modal-content"></div></dialog>
+  </body>
+</html>
