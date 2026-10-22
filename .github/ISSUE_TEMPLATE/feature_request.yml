@@ -1,0 +1,26 @@
+name: 功能建议
+description: 提出能改善本地演示、无障碍或合规指南的建议
+title: "[建议] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        本项目面向明确同意的服务通知设计，不接受短信轰炸、绕过退订或触达未授权对象的功能。
+  - type: textarea
+    id: problem
+    attributes:
+      label: 你想解决什么问题？
+      description: 说明当前不方便的地方和使用场景。
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 你建议怎样改进？
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: 你考虑过哪些替代方案？

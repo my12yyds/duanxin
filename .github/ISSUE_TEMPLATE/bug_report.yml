@@ -1,0 +1,37 @@
+name: 问题反馈
+description: 报告工作台中的错误或不符合预期的行为
+title: "[问题] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        请勿提交真实手机号、验证码、访问令牌或其他个人信息。
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: 遇到了什么问题？
+      description: 描述你看到的结果，以及你原本期望的结果。
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 如何复现？
+      description: 请提供不包含真实个人信息的操作步骤。
+      placeholder: |
+        1. 打开工作台
+        2. 进入……
+        3. 点击……
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: 浏览器和版本
+      placeholder: 例如 Chrome 版本号
+  - type: textarea
+    id: context
+    attributes:
+      label: 其他信息
+      description: 可补充截图或其他有助于定位问题的信息，请先遮盖个人数据。
