@@ -1,0 +1,15 @@
+{
+  "protocol": "USS-P/0.1",
+  "messageId": "msg_demo_otp_00000001",
+  "createdAt": "2026-10-22T08:00:00Z",
+  "expiresAt": "2026-10-22T08:02:00Z",
+  "sender": {"serviceId": "demo.login", "displayName": "示例登录服务", "trustedDomains": []},
+  "recipient": {"recipientRef": "recipient_demo_000002"},
+  "category": "otp",
+  "purpose": "响应用户刚刚主动发起的虚构登录验证挑战",
+  "basis": {"type": "user_request", "evidenceRef": "challenge_demo_0000001", "occurredAt": "2026-10-22T07:59:50Z", "expiresAt": "2026-10-22T08:02:00Z"},
+  "content": {"text": "示例登录服务：你的演示验证码为 <ONE_TIME_CODE>，2 分钟内有效。请勿告诉任何人。"},
+  "policy": {"version": "demo-policy-1", "dailyLimit": 3, "quietHours": {"start": "22:00", "end": "07:00", "timezone": "Asia/Shanghai"}},
+  "idempotencyKey": "demo_idempotency_otp_00000001",
+  "links": []
+}

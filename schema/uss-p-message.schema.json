@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/my12yyds/duanxin/main/schema/uss-p-message.schema.json",
+  "title": "USS-P 0.1 SMS Send Intent",
+  "description": "Application-layer send intent. Does not authenticate an SMS sender ID or define carrier transport.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["protocol", "messageId", "createdAt", "expiresAt", "sender", "recipient", "category", "purpose", "basis", "content", "policy", "idempotencyKey"],
+  "properties": {
+    "protocol": {"const": "USS-P/0.1"},
+    "messageId": {"type": "string", "pattern": "^[A-Za-z0-9_-]{12,80}$"},
+    "createdAt": {"type": "string", "format": "date-time"},
+    "expiresAt": {"type": "string", "format": "date-time"},
+    "sender": {
+      "type": "object", "additionalProperties": false,
+      "required": ["serviceId", "displayName", "trustedDomains"],
+      "properties": {
+        "serviceId": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{2,63}$"},
+        "displayName": {"type": "string", "minLength": 1, "maxLength": 80},
+        "trustedDomains": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\\.)+[a-z]{2,63}$"}}
+      }
+    },
+    "recipient": {
+      "type": "object", "additionalProperties": false,
+      "required": ["recipientRef"],
+      "properties": {"recipientRef": {"type": "string", "pattern": "^[A-Za-z0-9_-]{16,128}$"}}
+    },
+    "category": {"enum": ["service", "security", "otp", "marketing"]},
+    "purpose": {"type": "string", "minLength": 8, "maxLength": 240},
+    "basis": {
+      "type": "object", "additionalProperties": false,
+      "required": ["type", "evidenceRef", "occurredAt"],
+      "properties": {
+        "type": {"enum": ["explicit_consent", "transactional_relation", "user_request", "security_event"]},
+        "evidenceRef": {"type": "string", "pattern": "^[A-Za-z0-9_-]{12,128}$"},
+        "occurredAt": {"type": "string", "format": "date-time"},
+        "expiresAt": {"type": "string", "format": "date-time"}
+      }
+    },
+    "content": {
+      "type": "object", "additionalProperties": false,
+      "required": ["text"],
+      "properties": {"text": {"type": "string", "minLength": 1, "maxLength": 1000}}
+    },
+    "policy": {
+      "type": "object", "additionalProperties": false,
+      "required": ["version", "dailyLimit", "quietHours"],
+      "properties": {
+        "version": {"type": "string", "pattern": "^[A-Za-z0-9._-]{1,64}$"},
+        "dailyLimit": {"type": "integer", "minimum": 1, "maximum": 20},
+        "quietHours": {
+          "type": "object", "additionalProperties": false,
+          "required": ["start", "end", "timezone"],
+          "properties": {
+            "start": {"type": "string", "pattern": "^(?:[01][0-9]|2[0-3]):[0-5][0-9]$"},
+            "end": {"type": "string", "pattern": "^(?:[01][0-9]|2[0-3]):[0-5][0-9]$"},
+            "timezone": {"type": "string", "minLength": 1, "maxLength": 80}
+          }
+        },
+        "unsubscribe": {"type": "string", "minLength": 1, "maxLength": 240}
+      }
+    },
+    "idempotencyKey": {"type": "string", "pattern": "^[A-Za-z0-9_-]{16,128}$"},
+    "links": {
+      "type": "array", "maxItems": 3,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["url", "purpose"],
+        "properties": {
+          "url": {"type": "string", "format": "uri", "pattern": "^https://"},
+          "purpose": {"type": "string", "minLength": 4, "maxLength": 120}
+        }
+      }
+    }
+  },
+  "allOf": [
+    {"if": {"type": "object", "properties": {"category": {"const": "marketing"}}, "required": ["category"]}, "then": {"type": "object", "properties": {"basis": {"type": "object", "properties": {"type": {"const": "explicit_consent"}}, "required": ["type"]}, "policy": {"type": "object", "properties": {"unsubscribe": {"type": "string", "minLength": 1, "maxLength": 240}}, "required": ["unsubscribe"]}}}},
+    {"if": {"type": "object", "properties": {"category": {"const": "otp"}}, "required": ["category"]}, "then": {"type": "object", "properties": {"basis": {"type": "object", "properties": {"type": {"const": "user_request"}}, "required": ["type"]}, "links": {"type": "array", "maxItems": 0}}}},
+    {"if": {"type": "object", "properties": {"category": {"const": "security"}}, "required": ["category"]}, "then": {"type": "object", "properties": {"basis": {"type": "object", "properties": {"type": {"enum": ["security_event", "user_request"]}}, "required": ["type"]}}}}
+  ]
+}

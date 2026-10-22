@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#f5f7f4">
-    <meta name="description" content="短信卫士：本地演示同意管理、通知模板、退订抑制、频率规则和操作审计。不会连接短信服务商或发送短信。">
-    <title>短信卫士 — 合规通知工作台</title>
+    <meta name="description" content="用户短信安全协议 USS-P 草案的本地参考工作台，演示同意、退订优先、时效与频率规则。不会连接短信服务商或发送短信。">
+    <title>USS-P · 用户短信安全协议参考工作台</title>
     <link rel="stylesheet" href="styles.css">
     <script src="app.js" defer></script>
   </head>
@@ -14,7 +14,7 @@
     <div class="app-shell">
       <aside class="sidebar" id="sidebar">
         <a class="brand" href="#dashboard" data-route="dashboard" aria-label="短信卫士工作台">
-          <span class="brand-mark">信</span><span>短信卫士<span class="brand-en">MESSAGE GUARD</span></span>
+          <span class="brand-mark">安</span><span>短信安全协议<span class="brand-en">USS-P DRAFT 0.1</span></span>
         </a>
         <div class="workspace-label">工作台</div>
         <nav class="side-nav" aria-label="工作台导航">
@@ -24,6 +24,7 @@
           <a href="#campaigns" data-route="campaigns" class="nav-item"><span class="nav-icon">◷</span> 活动演练</a>
           <a href="#suppression" data-route="suppression" class="nav-item"><span class="nav-icon">⊘</span> 退订名单</a>
           <a href="#audit" data-route="audit" class="nav-item"><span class="nav-icon">≋</span> 操作审计</a>
+          <a href="https://github.com/my12yyds/duanxin/blob/main/SPEC.md" class="nav-item" target="_blank" rel="noreferrer"><span class="nav-icon">§</span> 协议草案 ↗</a>
         </nav>
         <div class="sidebar-bottom">
           <a href="#settings" data-route="settings" class="nav-item"><span class="nav-icon">⚙</span> 规则与数据</a>
@@ -40,7 +41,7 @@
         </header>
 
         <main id="main" tabindex="-1"><div id="view" class="view"></div></main>
-        <footer class="app-footer"><span>短信卫士 · 合规通知工作台</span><span>纯本地演示，不会发送短信</span></footer>
+        <footer class="app-footer"><span>USS-P 草案 · 本地参考工作台</span><span>不是运营商标准；不会发送短信</span></footer>
       </div>
     </div>
     <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
