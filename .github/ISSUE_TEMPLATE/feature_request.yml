@@ -1,12 +1,12 @@
 name: 功能建议
-description: 提出能改善本地演示、无障碍或合规指南的建议
+description: 改进 USS-P 草案、互操作性、用户安全指南或参考工作台
 title: "[建议] "
 labels: ["enhancement"]
 body:
   - type: markdown
     attributes:
       value: |
-        本项目面向明确同意的服务通知设计，不接受短信轰炸、绕过退订或触达未授权对象的功能。
+        USS-P 是早期应用层草案，不是运营商标准或认证。本项目不接受短信轰炸、绕过退订或触达未授权对象的功能。
   - type: textarea
     id: problem
     attributes:
