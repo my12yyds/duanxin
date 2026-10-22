@@ -1,0 +1,15 @@
+{
+  "protocol": "USS-P/0.1",
+  "messageId": "msg_demo_service_0001",
+  "createdAt": "2026-10-22T08:00:00Z",
+  "expiresAt": "2026-10-22T09:00:00Z",
+  "sender": {"serviceId": "demo.shop", "displayName": "示例商店", "trustedDomains": ["example.org"]},
+  "recipient": {"recipientRef": "recipient_demo_000001"},
+  "category": "service",
+  "purpose": "告知用户其主动创建的虚构订单状态发生变化",
+  "basis": {"type": "transactional_relation", "evidenceRef": "event_demo_order_0001", "occurredAt": "2026-10-22T07:58:00Z"},
+  "content": {"text": "示例商店：你的演示订单状态已更新。请从你已知的官方应用查看详情。"},
+  "policy": {"version": "demo-policy-1", "dailyLimit": 2, "quietHours": {"start": "21:00", "end": "08:00", "timezone": "Asia/Shanghai"}},
+  "idempotencyKey": "demo_idempotency_service_001",
+  "links": []
+}

@@ -1,0 +1,15 @@
+{
+  "protocol": "USS-P/0.1",
+  "messageId": "msg_demo_marketing_0001",
+  "createdAt": "2026-10-22T08:00:00Z",
+  "expiresAt": "2026-10-22T08:30:00Z",
+  "sender": {"serviceId": "demo.news", "displayName": "示例资讯", "trustedDomains": ["example.org"]},
+  "recipient": {"recipientRef": "recipient_demo_000003"},
+  "category": "marketing",
+  "purpose": "发送用户单独订阅的虚构月度产品资讯",
+  "basis": {"type": "explicit_consent", "evidenceRef": "consent_demo_0000001", "occurredAt": "2026-09-01T08:00:00Z"},
+  "content": {"text": "示例资讯：这是你订阅的演示月报。回复 TD 可停止此类资讯。"},
+  "policy": {"version": "demo-policy-1", "dailyLimit": 1, "quietHours": {"start": "21:00", "end": "08:00", "timezone": "Asia/Shanghai"}, "unsubscribe": "回复 TD 退订"},
+  "idempotencyKey": "demo_idempotency_mkt_00000001",
+  "links": []
+}

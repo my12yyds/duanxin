@@ -14,7 +14,16 @@ jobs:
     steps:
       - name: Check out source
         uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install protocol validation tools
+        run: npm ci
       - name: Check JavaScript syntax
         run: node --check public/app.js
       - name: Check required Pages files
         run: test -s public/index.html && test -s public/styles.css && test -s public/app.js
+      - name: Run protocol conformance tests
+        run: npm test && npm run validate:examples

@@ -1,0 +1,15 @@
+{
+  "protocol": "USS-P/0.1",
+  "messageId": "msg_demo_bad_00000001",
+  "createdAt": "2026-10-22T08:00:00Z",
+  "expiresAt": "2026-10-22T08:30:00Z",
+  "sender": {"serviceId": "demo.news", "displayName": "示例资讯", "trustedDomains": ["example.org"]},
+  "recipient": {"recipientRef": "recipient_demo_000004"},
+  "category": "marketing",
+  "purpose": "营销演示",
+  "basis": {"type": "transactional_relation", "evidenceRef": "event_demo_bad_0001", "occurredAt": "2026-10-22T07:59:00Z"},
+  "content": {"text": "错误示例，不得发送。"},
+  "policy": {"version": "demo-policy-1", "dailyLimit": 1, "quietHours": {"start": "21:00", "end": "08:00", "timezone": "Asia/Shanghai"}},
+  "idempotencyKey": "demo_idempotency_bad_000001",
+  "links": []
+}
