@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7f4">
+    <meta name="description" content="帮助开发者设计尊重用户选择的短信通知服务：同意管理、退订流程、发送治理与隐私检查。">
+    <title>短信卫士 — 让每条通知都有依据</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到主要内容</a>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="短信卫士首页">
+        <span class="brand-mark" aria-hidden="true">信</span>
+        <span>短信卫士<span class="brand-en">MESSAGE GUARD</span></span>
+      </a>
+      <nav aria-label="主导航">
+        <a href="#principles">设计原则</a>
+        <a href="#checklist">上线检查</a>
+        <a class="nav-cta" href="https://github.com/my12yyds/duanxin">查看 GitHub <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero shell" id="top" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="pulse" aria-hidden="true"></span> 开源指南 · 静态演示</p>
+          <h1 id="hero-title">让每一条通知，<br><em>都有用户的同意。</em></h1>
+          <p class="hero-lede">从订阅授权到一键退订，为你的短信通知建立清楚、克制、可追溯的规则。</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#checklist">开始检查 <span aria-hidden="true">↓</span></a>
+            <a class="text-link" href="#principles">了解设计原则 <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="privacy-note"><span aria-hidden="true">◉</span> 纯静态页面 · 不发送短信 · 不收集手机号</div>
+        </div>
+        <div class="hero-art" aria-label="通知规则示意图" role="img">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="phone-card">
+            <div class="phone-top"><span></span><span></span><span></span><b>通知预览</b></div>
+            <div class="message-icon" aria-hidden="true">✓</div>
+            <p class="message-title">你的选择很重要</p>
+            <p class="message-body">只在你订阅的服务范围内发送必要通知。</p>
+            <div class="message-rule"><span>发送前</span><strong>确认已授权</strong></div>
+            <div class="message-rule"><span>想要停止</span><strong>随时可退订</strong></div>
+            <div class="phone-footer"><span class="green-dot"></span> 本地示意，不会发送</div>
+          </div>
+          <div class="floating-tag tag-top"><span>01</span> 明确同意</div>
+          <div class="floating-tag tag-bottom"><span>02</span> 简单退订</div>
+          <span class="spark spark-a" aria-hidden="true">✳</span><span class="spark spark-b" aria-hidden="true">✳</span>
+        </div>
+      </section>
+
+      <section class="principles section shell" id="principles" aria-labelledby="principles-title">
+        <div class="section-heading">
+          <div><p class="eyebrow">从尊重开始</p><h2 id="principles-title">好的通知系统，<br class="mobile-break">先把边界想清楚。</h2></div>
+          <p>把用户的选择放在流程中心。每项规则都应该能被解释、被执行，也能被检查。</p>
+        </div>
+        <div class="principle-grid">
+          <article class="principle-card card-sage"><div class="card-number">01</div><div class="card-icon" aria-hidden="true">✳</div><h3>先有同意</h3><p>记录用户订阅的时间、来源与通知用途。用途变化时，重新征求同意。</p><span class="card-foot">CONSENT FIRST</span></article>
+          <article class="principle-card card-peach"><div class="card-number">02</div><div class="card-icon" aria-hidden="true">↗</div><h3>退订要简单</h3><p>让停止通知的入口清楚、直接、有效。退订后及时更新状态并停止后续触达。</p><span class="card-foot">EASY OPT-OUT</span></article>
+          <article class="principle-card card-blue"><div class="card-number">03</div><div class="card-icon" aria-hidden="true">⌁</div><h3>只发必要内容</h3><p>限定通知目的、发送频率和时段。服务提醒与营销内容应分别管理。</p><span class="card-foot">PURPOSE &amp; LIMITS</span></article>
+          <article class="principle-card card-lilac"><div class="card-number">04</div><div class="card-icon" aria-hidden="true">◎</div><h3>少留一点数据</h3><p>只保存完成通知所必需的信息，并明确访问权限、保存期限和删除方式。</p><span class="card-foot">PRIVACY BY DESIGN</span></article>
+        </div>
+      </section>
+
+      <section class="check-section" id="checklist" aria-labelledby="checklist-title">
+        <div class="shell checklist-layout">
+          <div class="check-intro">
+            <p class="eyebrow">上线前 · 5 分钟</p>
+            <h2 id="checklist-title">给你的通知流程<br>做一次快速检查。</h2>
+            <p>逐项确认基本保护措施。勾选状态只保存在这台设备的浏览器里，不会上传到任何服务器。</p>
+            <div class="progress-card" aria-live="polite">
+              <div class="progress-top"><span>准备进度</span><strong id="progress-count">0 / 6</strong></div>
+              <div class="progress-track" role="progressbar" aria-label="检查清单进度" aria-valuemin="0" aria-valuemax="6" aria-valuenow="0"><span id="progress-fill"></span></div>
+              <span class="progress-caption" id="progress-caption">先从同意管理开始</span>
+            </div>
+          </div>
+          <div class="checklist" id="checklist-items">
+            <label class="check-item"><input type="checkbox" data-check="consent"><span class="custom-check" aria-hidden="true"></span><span class="check-copy"><strong>用户主动订阅并明确知道用途</strong><small>保存同意时间、来源和通知类别。</small></span><span class="check-index">01</span></label>
+            <label class="check-item"><input type="checkbox" data-check="optout"><span class="custom-check" aria-hidden="true"></span><span class="check-copy"><strong>提供清楚且有效的退订方式</strong><small>收到退订后及时停止相关通知。</small></span><span class="check-index">02</span></label>
+            <label class="check-item"><input type="checkbox" data-check="limits"><span class="custom-check" aria-hidden="true"></span><span class="check-copy"><strong>设置发送频率和时段限制</strong><small>异常重试有上限，失败不会无限循环。</small></span><span class="check-index">03</span></label>
+            <label class="check-item"><input type="checkbox" data-check="identity"><span class="custom-check" aria-hidden="true"></span><span class="check-copy"><strong>消息说明发送方和联系渠道</strong><small>用户能识别消息来源并找到帮助。</small></span><span class="check-index">04</span></label>
+            <label class="check-item"><input type="checkbox" data-check="privacy"><span class="custom-check" aria-hidden="true"></span><span class="check-copy"><strong>只保存必要信息并设定删除期限</strong><small>敏感字段有访问控制和清晰的保留规则。</small></span><span class="check-index">05</span></label>
+            <label class="check-item"><input type="checkbox" data-check="audit"><span class="custom-check" aria-hidden="true"></span><span class="check-copy"><strong>能审计授权、退订和异常事件</strong><small>保留必要记录，避免记录消息正文等多余数据。</small></span><span class="check-index">06</span></label>
+            <button class="reset-button" id="reset-checklist" type="button">清除本地勾选</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="roadmap shell" aria-labelledby="roadmap-title">
+        <div class="roadmap-mark" aria-hidden="true"><span>信</span><i></i><i></i><i></i></div>
+        <div class="roadmap-copy"><p class="eyebrow">下一步</p><h2 id="roadmap-title">从一份清单，开始建立好习惯。</h2><p>欢迎一起完善中文合规通知指南、无障碍体验和安全设计示例。</p></div>
+        <a class="button button-dark" href="https://github.com/my12yyds/duanxin">参与项目 <span aria-hidden="true">↗</span></a>
+      </section>
+    </main>
+
+    <footer class="footer shell"><a class="brand footer-brand" href="#top"><span class="brand-mark" aria-hidden="true">信</span><span>短信卫士<span class="brand-en">MESSAGE GUARD</span></span></a><p>尊重选择 · 保护隐私 · 克制触达</p><a href="https://github.com/my12yyds/duanxin">GitHub ↗</a></footer>
+  </body>
+</html>
